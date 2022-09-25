@@ -1,11 +1,35 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Discord Notify'
+description: 'Send a Discord message to a webhook'
 inputs:
-  milliseconds: # change this
+  webhook_url:
+    description: 'Discord webhook URL'
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    default: ''
+  title:
+    description: 'Discord webhook URL'
+    required: false
+    default: ''
+  message:
+    description: 'Discord webhook URL'
+    required: true
+    default: ''
+  include_image:
+    description: 'Discord webhook URL'
+    required: false
+    default: 'false'
+  avatar_url:
+    description: 'Discord webhook URL'
+    required: false
+    default: ''
+  username:
+    description: 'Discord webhook URL'
+    required: false
+    default: ''
+  colour:
+    description: 'Discord webhook URL'
+    required: false
+    default: ''
+
 runs:
   using: 'node16'
   main: 'dist/index.js'

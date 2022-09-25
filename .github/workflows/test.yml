@@ -19,6 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./
+      - name: discord notify all options
+        uses: ./ # Uses an action in the root directory
         with:
-          milliseconds: 1000
+          webhook_url: 'https://discord.com/api/webhooks/1023727167974166588/HKBLDMMRoTeqnUW1ENl6GjsZV0JByTYoCDQ23S2JzGjVyb-6NNy5hETj5Q6k7meTysJG'
+          title: test title
+          message: test message
+          include_image: true
+          #avatar_url: test
+          username: test
+          #colour: '#ffffff'
