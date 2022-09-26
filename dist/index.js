@@ -53,12 +53,16 @@ function run() {
             const colour = core.getInput('colour');
             const include_image = core.getBooleanInput('include_image');
             const custom_image_url = core.getInput('custom_image_url');
+            const title_url = core.getInput('title_url');
             const embed = {
                 title,
                 description: message
             };
             if (colour !== '') {
                 embed.color = parseInt(colour.replace('#', ''), 16);
+            }
+            if (title_url !== '') {
+                embed.url = title_url;
             }
             if (include_image && github.context.eventName === 'pull_request') {
                 embed.image = {
