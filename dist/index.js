@@ -64,12 +64,16 @@ function run() {
             if (title_url !== '') {
                 embed.url = title_url;
             }
-            if (include_image && github.context.eventName === 'pull_request') {
-                embed.image = {
-                    url: `https://opengraph.githubassets.com/${github.context.sha}/${github.context.repo.owner}/${github.context.repo.repo}/pull/${(_a = github.context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number}`
-                };
+            if (include_image) {
+                if (github.context.eventName === 'pull_request') {
+                    embed.image = {
+                        url: `https://opengraph.githubassets.com/${github.context.sha}/${github.context.repo.owner}/${github.context.repo.repo}/pull/${(_a = github.context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number}`
+                    };
+                }
                 if (custom_image_url !== '') {
-                    embed.image.url = custom_image_url;
+                    embed.image = {
+                        url: custom_image_url
+                    };
                 }
             }
             const body = {

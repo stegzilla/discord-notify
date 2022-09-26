@@ -45,13 +45,16 @@ async function run(): Promise<void> {
       embed.url = title_url
     }
 
-    if (include_image && github.context.eventName === 'pull_request') {
-      embed.image = {
-        url: `https://opengraph.githubassets.com/${github.context.sha}/${github.context.repo.owner}/${github.context.repo.repo}/pull/${github.context.payload.pull_request?.number}`
+    if (include_image) {
+      if (github.context.eventName === 'pull_request') {
+        embed.image = {
+          url: `https://opengraph.githubassets.com/${github.context.sha}/${github.context.repo.owner}/${github.context.repo.repo}/pull/${github.context.payload.pull_request?.number}`
+        }
       }
-
       if (custom_image_url !== '') {
-        embed.image.url = custom_image_url
+        embed.image = {
+          url: custom_image_url
+        }
       }
     }
 
