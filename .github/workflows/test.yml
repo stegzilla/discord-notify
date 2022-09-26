@@ -22,10 +22,11 @@ jobs:
       - name: discord notify all options
         uses: ./ # Uses an action in the root directory
         with:
-          webhook_url: 'https://discord.com/api/webhooks/1023727167974166588/HKBLDMMRoTeqnUW1ENl6GjsZV0JByTYoCDQ23S2JzGjVyb-6NNy5hETj5Q6k7meTysJG'
-          title: test title
-          message: test message
+          webhook_url: https://discord.com/api/webhooks/1023727167974166588/HKBLDMMRoTeqnUW1ENl6GjsZV0JByTYoCDQ23S2JzGjVyb-6NNy5hETj5Q6k7meTysJG
+          title: New PR opened
+          message: "**${{ github.event.pull_request.title }}**\n**Creator:** ${{ github.event.pull_request.user.login }}\n${{ github.event.pull_request.html_url }}"
           include_image: true
-          #avatar_url: test
-          username: test
-          #colour: '#ffffff'
+          avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          username: GitHub PR Notifier
+          colour: '#3371FF'
+          #custom_image_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png

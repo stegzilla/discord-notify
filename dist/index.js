@@ -46,12 +46,13 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const webhookUrl = core.getInput('webhook_url', { required: true });
-            core.info(webhookUrl);
             const title = core.getInput('title', { required: true });
             const message = core.getInput('message', { required: true });
             const avatar_url = core.getInput('avatar_url');
             const username = core.getInput('username');
             const colour = core.getInput('colour');
+            const include_image = core.getBooleanInput('include_image');
+            const custom_image_url = core.getInput('custom_image_url');
             const embed = {
                 title,
                 description: message
@@ -59,22 +60,24 @@ function run() {
             if (colour !== '') {
                 embed.color = parseInt(colour.replace('#', ''), 16);
             }
-            const include_image = core.getBooleanInput('include_image');
             if (include_image && github.context.eventName === 'pull_request') {
-                embed['image'] = {
+                embed.image = {
                     url: `https://opengraph.githubassets.com/${github.context.sha}/${github.context.repo.owner}/${github.context.repo.repo}/pull/${(_a = github.context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number}`
                 };
+                if (custom_image_url !== '') {
+                    embed.image.url = custom_image_url;
+                }
             }
             const body = {
                 embeds: [embed]
             };
             if (avatar_url !== '') {
-                body['avatar_url'] = avatar_url;
+                body.avatar_url = avatar_url;
             }
             if (username !== '') {
-                body['username'] = avatar_url;
+                body.username = username;
             }
-            core.info(JSON.stringify(body));
+            core.debug(JSON.stringify(body));
             yield (0, node_fetch_1.default)(webhookUrl, {
                 method: 'POST',
                 body: JSON.stringify(body),
