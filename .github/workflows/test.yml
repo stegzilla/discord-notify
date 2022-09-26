@@ -22,7 +22,7 @@ jobs:
       - name: discord notify all options
         uses: ./ # Uses an action in the root directory
         with:
-          webhook_url: https://discord.com/api/webhooks/1023727167974166588/HKBLDMMRoTeqnUW1ENl6GjsZV0JByTYoCDQ23S2JzGjVyb-6NNy5hETj5Q6k7meTysJG
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
           title: New PR opened
           message: "**${{ github.event.pull_request.title }}**\n**Creator:** ${{ github.event.pull_request.user.login }}\n${{ github.event.pull_request.html_url }}"
           include_image: true
