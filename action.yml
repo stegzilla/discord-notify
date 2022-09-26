@@ -33,6 +33,10 @@ inputs:
     description: 'Include custom image on card, include_image must be true'
     required: false
     default: ''
+  title_url:
+    description: 'Make the title of the card a link'
+    required: false
+    default: ''
 
 runs:
   using: 'node16'

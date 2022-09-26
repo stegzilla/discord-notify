@@ -18,6 +18,7 @@ This action sends a notification to Discord.
 | `username`         |                    | `GitHub`  | Username to send message as                                                                                               |
 | `avatar_url`       |                    |           | Avatar to use for user                                                                                                    |
 | `custom_image_url` |                    |           | Attach custom image to card, overrides pull request image if set. Requires `include_image` to be `true`                   |
+| `title_url`        |                    |           | Make the title of the card a link                                                                                         |
 
 ```yaml
 name: 'New PR Notification'
@@ -29,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Discord notification
-        uses: stegzilla/discord-notify@v1
+        uses: stegzilla/discord-notify@v2
         with:
           webhook_url: https://discord.com/api/webhooks/...
           title: New PR opened

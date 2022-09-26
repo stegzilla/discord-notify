@@ -7,6 +7,7 @@ type Embed = {
   description: string
   color?: number
   image?: ImageEmbed
+  url?: string
 }
 
 type ImageEmbed = {
@@ -29,6 +30,7 @@ async function run(): Promise<void> {
     const colour = core.getInput('colour')
     const include_image = core.getBooleanInput('include_image')
     const custom_image_url = core.getInput('custom_image_url')
+    const title_url = core.getInput('title_url')
 
     const embed: Embed = {
       title,
@@ -37,6 +39,10 @@ async function run(): Promise<void> {
 
     if (colour !== '') {
       embed.color = parseInt(colour.replace('#', ''), 16)
+    }
+
+    if (title_url !== '') {
+      embed.url = title_url
     }
 
     if (include_image && github.context.eventName === 'pull_request') {
