@@ -23,7 +23,8 @@ This action sends a notification to Discord.
 ```yaml
 name: 'New PR Notification'
 on:
-  pull_request: [opened, reopened]
+  pull_request: 
+    types: [opened, reopened]
 
 jobs:
   notify:
