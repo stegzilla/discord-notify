@@ -22,11 +22,11 @@ jobs:
       - name: discord notify all options
         uses: ./ # Uses an action in the root directory
         with:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          title: New PR opened
-          message: "**${{ github.event.pull_request.title }}**\n**Creator:** ${{ github.event.pull_request.user.login }}\n${{ github.event.pull_request.html_url }}"
+          webhook_url: https://http-echo-stegzilla.herokuapp.com
+          title: Test title
+          message: 'test message'
           include_image: true
           avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-          username: GitHub PR Notifier
+          username: TestUsername
           colour: '#3371FF'
           #custom_image_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
