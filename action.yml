@@ -1,5 +1,8 @@
 name: 'Discord Notify'
 description: 'Send a Discord message to a webhook'
+branding:
+  icon: bell
+  color: purple
 inputs:
   webhook_url:
     description: 'Webhook URL from Discord'
